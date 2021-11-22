@@ -11,7 +11,7 @@ bool UPSData::SetFloatByName(UObject * Target, FName VarName, float NewValue, fl
 	if (Target)
 	{
 		float FoundValue;
-		UFloatProperty* ValueProp = FindField<UFloatProperty>(Target->GetClass(), VarName);
+		FFloatProperty* ValueProp = FindFProperty<FFloatProperty>(Target->GetClass(), VarName);
 		if (ValueProp)
 		{
 			ValueProp->SetPropertyValue_InContainer(Target, NewValue); //this actually sets the variable
@@ -28,7 +28,7 @@ bool UPSData::SetIntByName(UObject * Target, FName VarName, int NewValue, int & 
 	if (Target)
 	{
 		int FoundValue;
-		UIntProperty* ValueProp = FindField<UIntProperty>(Target->GetClass(), VarName);
+		FIntProperty* ValueProp = FindFProperty<FIntProperty>(Target->GetClass(), VarName);
 		if (ValueProp)
 		{
 			ValueProp->SetPropertyValue_InContainer(Target, NewValue); //this actually sets the variable
@@ -46,7 +46,7 @@ bool UPSData::SetInt64ByName(UObject * Target, FName VarName, int64 NewValue, in
 	if (Target)
 	{
 		int64 FoundValue;
-		UUInt64Property* ValueProp = FindField<UUInt64Property>(Target->GetClass(), VarName);
+		FInt64Property* ValueProp = FindFProperty<FInt64Property>(Target->GetClass(), VarName);
 		if (ValueProp)
 		{
 			ValueProp->SetPropertyValue_InContainer(Target, NewValue); //this actually sets the variable
@@ -63,7 +63,7 @@ bool UPSData::SetBoolByName(UObject * Target, FName VarName, bool NewValue, bool
 	if (Target)
 	{
 		bool FoundValue;
-		UBoolProperty* ValueProp = FindField<UBoolProperty>(Target->GetClass(), VarName);
+		FBoolProperty* ValueProp = FindFProperty<FBoolProperty>(Target->GetClass(), VarName);
 		if (ValueProp)
 		{
 			ValueProp->SetPropertyValue_InContainer(Target, NewValue); //this actually sets the variable
@@ -80,7 +80,7 @@ bool UPSData::SetNameByName(UObject * Target, FName VarName, FName NewValue, FNa
 	if (Target)
 	{
 		FName FoundValue;
-		UNameProperty* ValueProp = FindField<UNameProperty>(Target->GetClass(), VarName);
+		FNameProperty* ValueProp = FindFProperty<FNameProperty>(Target->GetClass(), VarName);
 		if (ValueProp)
 		{
 			ValueProp->SetPropertyValue_InContainer(Target, NewValue); //this actually sets the variable
@@ -97,7 +97,7 @@ bool UPSData::SetObjectByName(UObject * Target, FName VarName, UObject* NewValue
 	if (Target)
 	{
 		UObject* FoundValue = nullptr;
-		UObjectProperty* ValueProp = FindField<UObjectProperty>(Target->GetClass(), VarName);
+		FObjectProperty* ValueProp = FindFProperty<FObjectProperty>(Target->GetClass(), VarName);
 		if (ValueProp)
 		{
 			ValueProp->SetPropertyValue_InContainer(Target, NewValue); //this actually sets the variable
@@ -116,7 +116,7 @@ bool UPSData::SetClassByName(UObject * Target, FName VarName, class UClass* NewV
 	if (Target)
 	{
 		class UClass FoundValue;
-		UClassProperty* ValueProp = FindField<UClassProperty>(Target->GetClass(), VarName);
+		FClassProperty* ValueProp = FindFProperty<FClassProperty>(Target->GetClass(), VarName);
 		if (ValueProp)
 		{
 			ValueProp->SetPropertyValue_InContainer(Target, NewValue); //this actually sets the variable
@@ -134,7 +134,7 @@ bool UPSData::SetByteByName(UObject * Target, FName VarName, uint8 NewValue, uin
 	if (Target)
 	{
 		uint8 FoundValue;
-		UByteProperty* ValueProp = FindField<UByteProperty>(Target->GetClass(), VarName);
+		FByteProperty* ValueProp = FindFProperty<FByteProperty>(Target->GetClass(), VarName);
 		if (ValueProp)
 		{
 			ValueProp->SetPropertyValue_InContainer(Target, NewValue); //this actually sets the variable
@@ -151,7 +151,7 @@ bool UPSData::SetStringByName(UObject * Target, FName VarName, FString NewValue,
 	if (Target)
 	{
 		FString FoundValue;
-		UStrProperty* ValueProp = FindField<UStrProperty>(Target->GetClass(), VarName);
+		FStrProperty* ValueProp = FindFProperty<FStrProperty>(Target->GetClass(), VarName);
 		if (ValueProp)
 		{
 			ValueProp->SetPropertyValue_InContainer(Target, NewValue); //this actually sets the variable
@@ -168,7 +168,7 @@ bool UPSData::SetTextByName(UObject * Target, FName VarName, FText NewValue, FTe
 	if (Target)
 	{
 		FText FoundValue;
-		UTextProperty* ValueProp = FindField<UTextProperty>(Target->GetClass(), VarName);
+		FTextProperty* ValueProp = FindFProperty<FTextProperty>(Target->GetClass(), VarName);
 		if (ValueProp)
 		{
 			ValueProp->SetPropertyValue_InContainer(Target, NewValue); //this actually sets the variable
@@ -187,7 +187,7 @@ bool UPSData::SetStructByName(UObject * Target, FName VarName, UScriptStruct* Ne
 	if (Target)
 	{
 		UScriptStruct* FoundValue;
-		UStructProperty* ValueProp = FindField<UStructProperty>(Target->GetClass(), VarName);
+		UStructProperty* ValueProp = FindFProperty<UStructProperty>(Target->GetClass(), VarName);
 		if (ValueProp)
 		{
 			ValueProp->SetPropertyValue_InContainer(Target, NewValue); //this actually sets the variable
@@ -207,7 +207,7 @@ bool UPSData::SetEnumByName(UObject * Target, FName VarName, uint8 NewValue, uin
 	if (Target)
 	{
 		uint8 FoundValue;
-		UEnumProperty* ValueProp = FindField<UEnumProperty>(Target->GetClass(), VarName);
+		UEnumProperty* ValueProp = FindFProperty<UEnumProperty>(Target->GetClass(), VarName);
 		if (ValueProp)
 		{
 			ValueProp->SetPropertyValue_InContainer(Target, NewValue); //this actually sets the variable
@@ -227,7 +227,7 @@ bool UPSData::GetFloatByName(UObject * Target, FName VarName, float & OutValue)
 	if (Target) //make sure Target was set in blueprints. 
 	{
 		float FoundValue;
-		UFloatProperty* ValueProp = FindField<UFloatProperty>(Target->GetClass(), VarName);  // try to find float property in Target named VarName
+		FFloatProperty* ValueProp = FindFProperty<FFloatProperty>(Target->GetClass(), VarName);  // try to find float property in Target named VarName
 		if (ValueProp) //if we found variable
 		{
 			FoundValue = ValueProp->GetPropertyValue_InContainer(Target);  // get the value from FloatProp
@@ -243,7 +243,7 @@ bool UPSData::GetIntByName(UObject * Target, FName VarName, int & OutValue)
 	if (Target) //make sure Target was set in blueprints. 
 	{
 		int FoundValue;
-		UIntProperty* ValueProp = FindField<UIntProperty>(Target->GetClass(), VarName);  // try to find float property in Target named VarName
+		FIntProperty* ValueProp = FindFProperty<FIntProperty>(Target->GetClass(), VarName);  // try to find float property in Target named VarName
 		if (ValueProp) //if we found variable
 		{
 			FoundValue = ValueProp->GetPropertyValue_InContainer(Target);  // get the value from FloatProp
@@ -259,7 +259,7 @@ bool UPSData::GetInt64ByName(UObject * Target, FName VarName, int64 & OutValue)
 	if (Target) //make sure Target was set in blueprints. 
 	{
 		int64 FoundValue;
-		UInt64Property* ValueProp = FindField<UInt64Property>(Target->GetClass(), VarName);  // try to find float property in Target named VarName
+		FInt64Property* ValueProp = FindFProperty<FInt64Property>(Target->GetClass(), VarName);  // try to find float property in Target named VarName
 		if (ValueProp) //if we found variable
 		{
 			FoundValue = ValueProp->GetPropertyValue_InContainer(Target);  // get the value from FloatProp
@@ -275,7 +275,7 @@ bool UPSData::GetBoolByName(UObject * Target, FName VarName, bool &OutValue)
 	if (Target) //make sure Target was set in blueprints. 
 	{
 		bool FoundValue;
-		UBoolProperty* ValueProp = FindField<UBoolProperty>(Target->GetClass(), VarName);  // try to find float property in Target named VarName
+		FBoolProperty* ValueProp = FindFProperty<FBoolProperty>(Target->GetClass(), VarName);  // try to find float property in Target named VarName
 		if (ValueProp) //if we found variable
 		{
 			FoundValue = ValueProp->GetPropertyValue_InContainer(Target);  // get the value from FloatProp
@@ -291,7 +291,7 @@ bool UPSData::GetNameByName(UObject * Target, FName VarName, FName & OutValue)
 	if (Target) //make sure Target was set in blueprints. 
 	{
 		FName FoundValue;
-		UNameProperty* ValueProp = FindField<UNameProperty>(Target->GetClass(), VarName);  // try to find float property in Target named VarName
+		FNameProperty* ValueProp = FindFProperty<FNameProperty>(Target->GetClass(), VarName);  // try to find float property in Target named VarName
 		if (ValueProp) //if we found variable
 		{
 			FoundValue = ValueProp->GetPropertyValue_InContainer(Target);  // get the value from FloatProp
@@ -307,7 +307,7 @@ bool UPSData::GetObjectByName(UObject * Target, FName VarName, UObject *& OutVal
 	if (Target) //make sure Target was set in blueprints. 
 	{
 		UObject* FoundValue;
-		UObjectProperty* ValueProp = FindField<UObjectProperty>(Target->GetClass(), VarName);  // try to find float property in Target named VarName
+		FObjectProperty* ValueProp = FindFProperty<FObjectProperty>(Target->GetClass(), VarName);  // try to find float property in Target named VarName
 		if (ValueProp) //if we found variable
 		{
 			FoundValue = ValueProp->GetPropertyValue_InContainer(Target);  // get the value from FloatProp
@@ -323,7 +323,7 @@ bool UPSData::GetClassByName(UObject * Target, FName VarName, UClass *& OutValue
 	if (Target) //make sure Target was set in blueprints. 
 	{
 		UClass* FoundValue;
-		UClassProperty* ValueProp = FindField<UClassProperty>(Target->GetClass(), VarName);  // try to find float property in Target named VarName
+		FClassProperty* ValueProp = FindFProperty<FClassProperty>(Target->GetClass(), VarName);  // try to find float property in Target named VarName
 		if (ValueProp) //if we found variable
 		{
 			FoundValue = ValueProp->GetPropertyValue_InContainer(Target)->StaticClass();  // get the value from FloatProp
@@ -339,7 +339,7 @@ bool UPSData::GetByteByName(UObject * Target, FName VarName, uint8 & OutValue)
 	if (Target) //make sure Target was set in blueprints. 
 	{
 		uint8 FoundValue;
-		UInt8Property* ValueProp = FindField<UInt8Property>(Target->GetClass(), VarName);  // try to find float property in Target named VarName
+		FInt8Property* ValueProp = FindFProperty<FInt8Property>(Target->GetClass(), VarName);  // try to find float property in Target named VarName
 		if (ValueProp) //if we found variable
 		{
 			FoundValue = ValueProp->GetPropertyValue_InContainer(Target);  // get the value from FloatProp
@@ -355,7 +355,7 @@ bool UPSData::GetStringByName(UObject * Target, FName VarName, FString & OutValu
 	if (Target) //make sure Target was set in blueprints. 
 	{
 		FString FoundValue;
-		UStrProperty* ValueProp = FindField<UStrProperty>(Target->GetClass(), VarName);  // try to find float property in Target named VarName
+		FStrProperty* ValueProp = FindFProperty<FStrProperty>(Target->GetClass(), VarName);  // try to find float property in Target named VarName
 		if (ValueProp) //if we found variable
 		{
 			FoundValue = ValueProp->GetPropertyValue_InContainer(Target);  // get the value from FloatProp
@@ -371,7 +371,7 @@ bool UPSData::GetTextByName(UObject * Target, FName VarName, FText & OutValue)
 	if (Target) //make sure Target was set in blueprints. 
 	{
 		FText FoundValue;
-		UTextProperty* ValueProp = FindField<UTextProperty>(Target->GetClass(), VarName);  // try to find float property in Target named VarName
+		FTextProperty* ValueProp = FindFProperty<FTextProperty>(Target->GetClass(), VarName);  // try to find float property in Target named VarName
 		if (ValueProp) //if we found variable
 		{
 			FoundValue = ValueProp->GetPropertyValue_InContainer(Target);  // get the value from FloatProp
@@ -388,7 +388,7 @@ bool UPSData::GetStructByName(UObject * Target, FName VarName, UScriptStruct *& 
 	if (Target) //make sure Target was set in blueprints. 
 	{
 		UScriptStruct* FoundValue;
-		UStructProperty* ValueProp = FindField<UStructProperty>(Target->GetClass(), VarName);  // try to find float property in Target named VarName
+		UStructProperty* ValueProp = FindFProperty<UStructProperty>(Target->GetClass(), VarName);  // try to find float property in Target named VarName
 		if (ValueProp) //if we found variable
 		{
 			FoundValue = ValueProp->GetPropertyValue_InContainer(Target);  // get the value from FloatProp
@@ -406,7 +406,7 @@ bool UPSData::GetEnumByName(UObject * Target, FName VarName, uint8 & OutValue)
 	if (Target) //make sure Target was set in blueprints. 
 	{
 		float FoundValue;
-		UEnumProperty* ValueProp = FindField<UEnumProperty>(Target->GetClass(), VarName);  // try to find float property in Target named VarName
+		UEnumProperty* ValueProp = FindFProperty<UEnumProperty>(Target->GetClass(), VarName);  // try to find float property in Target named VarName
 		if (ValueProp) //if we found variable
 		{
 			FoundValue = ValueProp->GetPropertyValue_InContainer(Target);  // get the value from FloatProp
